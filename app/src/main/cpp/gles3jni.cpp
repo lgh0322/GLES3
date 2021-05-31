@@ -243,11 +243,7 @@ extern "C" {
     JNIEXPORT void JNICALL Java_com_android_gles3jni_GLES3JNILib_step(JNIEnv* env, jobject obj);
 };
 
-#if !defined(DYNAMIC_ES3)
-static GLboolean gl3stubInit() {
-    return GL_TRUE;
-}
-#endif
+
 
 
 
@@ -266,14 +262,9 @@ Java_com_vaca_myapplication_GLES3JNILib_init(JNIEnv *env, jclass clazz) {
     printGlString("Renderer", GL_RENDERER);
     printGlString("Extensions", GL_EXTENSIONS);
 
-    const char* versionStr = (const char*)glGetString(GL_VERSION);
-    if (strstr(versionStr, "OpenGL ES 3.") && gl3stubInit()) {
-        g_renderer = createES3Renderer();
-    } else if (strstr(versionStr, "OpenGL ES 2.")) {
-        g_renderer = createES2Renderer();
-    } else {
-        ALOGE("Unsupported OpenGL ES version");
-    }
+
+    g_renderer = createES3Renderer();
+
 }
 
 

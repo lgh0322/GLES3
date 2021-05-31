@@ -27,7 +27,7 @@ internal class GLES3JNIView(context: Context?) : GLSurfaceView(context) {
 
 
     constructor(context: Context?, attrs: AttributeSet?) : this(context) {
-  
+
     }
 
 
